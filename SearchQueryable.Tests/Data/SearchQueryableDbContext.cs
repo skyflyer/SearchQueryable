@@ -6,6 +6,8 @@ public class SearchQueryableDbContext : DbContext
 {
     public DbSet<Book> Books { get; set; }
     public DbSet<Publisher> Publishers { get; set; }
+    public DbSet<Brand> Brands { get; set; }
+    public DbSet<Model> Models { get; set; }
 
     #nullable disable
     public SearchQueryableDbContext(DbContextOptions opts) : base (opts) { }

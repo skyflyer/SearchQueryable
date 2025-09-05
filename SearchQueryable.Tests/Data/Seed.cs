@@ -4,7 +4,7 @@ public static class Seed
 {
     public static void RunSeed(SearchQueryableDbContext ctx)
     {
-        if (ctx.Books.Count() == 0) {
+        if (!ctx.Books.Any()) {
             var books = new List<Book>()
             {
                 new Book("Romeo && Juliet", "William Shakespeare", 1597, "ISBN 123456", 99.99m, new Publisher("Pasadena", "First street")),
@@ -18,6 +18,31 @@ public static class Seed
                 ctx.Books.AddRange(books);
             }
 
+            ctx.SaveChanges();
+        }
+
+        if (!ctx.Brands.Any()) {
+            var brands = new List<Brand>() {
+                new() {
+                    Name = "BMW",
+                    YearEstablished = 1916,
+                    Models = [
+                        new() { Name = "i3", Year = 2020 },
+                        new() { Name = "i4", Year = 2021 },
+                        new() { Name = "abcDEF", Year = 2030 }
+                    ]
+                },
+                new() {
+                    Name = "Audi",
+                    YearEstablished = 1909,
+                    Models = [
+                        new() { Name = "A3", Year = 1995 },
+                        new() { Name = "A4", Year = 1996 }
+                    ]
+                }
+            };
+
+            ctx.Brands.AddRange(brands);
             ctx.SaveChanges();
         }
     }

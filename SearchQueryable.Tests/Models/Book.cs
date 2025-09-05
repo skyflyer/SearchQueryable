@@ -13,8 +13,10 @@ public class Book
 
     public string? ISBN { get; set; }
 
-    public string Dance {
-        get {
+    public string Dance
+    {
+        get
+        {
             return "Dance";
         }
     }
@@ -23,7 +25,7 @@ public class Book
 
     public int? PublisherId { get; private set; }
 
-    public Publisher Publisher  { get; private set; }
+    public Publisher Publisher { get; private set; }
 
     [NotMapped]
     public IEnumerable<string> Chapters { get; set; }
@@ -34,7 +36,7 @@ public class Book
 
     public BookStatus Status;
 
-    #nullable disable
+#nullable disable
     private Book() { }
 
     public Book(string title, string author, int year, string isbn, decimal price, Publisher publisher = null)
@@ -47,7 +49,7 @@ public class Book
         Price = price;
         Publisher = publisher;
     }
-    #nullable restore
+#nullable restore
 
     public override string ToString()
     {
